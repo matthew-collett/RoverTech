@@ -1,13 +1,7 @@
-/*
- * File:   interrupt_manager.c
- * Author: matthewcollett
- *
- * Created on February 10, 2024, 1:21 AM
- */
+// interrupt_manager.c
+#include "interrupt_manager.h"
 
-
-#include <xc.h>
-
-void main(void) {
-    return;
+void INTERRUPT_MANAGER_Initialize(void) {
+    INTCONbits.GIE = 1; // enable global interrupts
+    INTCONbits.PEIE = 1; // enable peripheral interrupts
 }
