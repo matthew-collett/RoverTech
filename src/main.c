@@ -9,7 +9,7 @@
 #include <xc.h>
 
 #define _XTAL_FREQ 32000000  // system oscillator frequency
-#define I2C_SCL_SPEED 200000 // I2C SCL clock speed
+#define I2C_SCL_SPEED 100000 // I2C SCL clock speed
 #define APDS9960_I2C_ADDR 0x39 // address of colour sensor
 
 // Register addresses and constants for the APDS9960
@@ -62,6 +62,8 @@ void main(void) {
     init();
     while (1) {
         I2C_ReadColorData(&red, &green, &blue, &clear);
+        
+        
     }
 }
 
@@ -97,11 +99,6 @@ void Initialize_PPS(void) {
     RB2PPS = 0x15;     // output: SDA is on RB2
 }
 
-void Initialize_I2C(void) {
-    // I2C master mode
-    SSP1CON1 = 0b00101000;
-    SSP1ADD = (_XTAL_FREQ / (4 * I2C_SCL_SPEED)) - 1;
-}
 
 void Lock_PPS(void) {
     PPSLOCK = 0x55;
@@ -112,6 +109,13 @@ void Lock_PPS(void) {
 void I2C_Wait(void) {
     while ((SSP1CON2 & 0x1F) || (SSP1STATbits.R_nW));
 }
+
+void Initialize_I2C(void) {
+    // I2C master mode
+    SSP1CON1 = 0b00101000;
+    SSP1ADD = (_XTAL_FREQ / (4 * I2C_SCL_SPEED)) - 1;
+}
+
 
 void I2C_Start(void) {
     SSP1CON2bits.SEN = 1; 

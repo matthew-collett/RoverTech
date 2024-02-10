@@ -3,8 +3,8 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>ECE3232</name>
-            <creation-uuid>31155a25-61ff-4316-bc9b-3c9a4951e540</creation-uuid>
+            <name>RoverTech</name>
+            <creation-uuid>9529b120-83b0-4f0a-affe-3d4b414974c6</creation-uuid>
             <make-project-type>0</make-project-type>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
