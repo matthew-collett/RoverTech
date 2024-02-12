@@ -6,4 +6,12 @@
 
 void PIN_MANAGER_Initialize(void);
 
+void Input_Pins_Initialize(void);
+
+void Output_Pins_Initialize(void);
+
+void Analog_Pins_Initialize(void);
+
+void Digital_Pins_Initialize(void);
+
 #endif
