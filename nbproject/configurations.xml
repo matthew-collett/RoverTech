@@ -7,6 +7,7 @@
         <itemPath>include/drivers/i2c.h</itemPath>
         <itemPath>include/drivers/pps_manager.h</itemPath>
         <itemPath>include/drivers/interrupt_manager.h</itemPath>
+        <itemPath>uart.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="peripherals" projectFiles="true">
         <itemPath>include/peripherals/rgb_sensor.h</itemPath>
@@ -21,6 +22,7 @@
         <itemPath>src/drivers/i2c.c</itemPath>
         <itemPath>src/drivers/interrupt_manager.c</itemPath>
         <itemPath>src/drivers/pps_manager.c</itemPath>
+        <itemPath>uart.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="peripherals" projectFiles="true">
         <itemPath>src/peripherals/rgb_sensor.c</itemPath>
@@ -42,7 +44,7 @@
         <platformTool>snap</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.46</languageToolchainVersion>
-        <platform>3</platform>
+        <platform>4</platform>
       </toolsSet>
       <packs>
         <pack name="PIC16F1xxxx_DFP" vendor="Microchip" version="1.24.387"/>
@@ -69,7 +71,7 @@
         <makeUseCleanTarget>false</makeUseCleanTarget>
         <makeCustomizationPreStep></makeCustomizationPreStep>
         <makeCustomizationPostStepEnabled>true</makeCustomizationPostStepEnabled>
-        <makeCustomizationPostStep>copy ${ImagePath} "D:\"</makeCustomizationPostStep>
+        <makeCustomizationPostStep>cp ${ImagePath} /Volumes/XPRESS</makeCustomizationPostStep>
         <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
@@ -111,7 +113,6 @@
       </HI-TECH-COMP>
       <HI-TECH-LINK>
         <property key="additional-options-checksum" value=""/>
-        <property key="additional-options-checksumAVR" value=""/>
         <property key="additional-options-code-offset" value=""/>
         <property key="additional-options-command-line" value=""/>
         <property key="additional-options-errata" value=""/>
@@ -249,7 +250,6 @@
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="true"/>
-        <property key="event.recorder.debugger.behavior" value="Running"/>
         <property key="event.recorder.enabled" value="false"/>
         <property key="event.recorder.scvd.files" value=""/>
         <property key="freeze.timers" value="false"/>

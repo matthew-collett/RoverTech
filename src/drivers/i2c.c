@@ -23,11 +23,13 @@ void I2C_RepeatedStart(void) {
 void I2C_Stop(void) {
     SSP1CON2bits.PEN = 1; // initiate stop condition on SDA and SCL pins
     while(SSP1CON2bits.PEN); // wait until stop condition is not idle
+    PIR3bits.SSP1IF = 0; // clear SSP interrupt flag
+
 }
 
 void I2C_SendByte(unsigned char byte) {
     SSP1BUF = byte; // send byte
-    while(SSP1STATbits.R_W); // wait until the transmission is complete
+    while(!PIR3bits.SSP1IF); // wait until the transmission is complete
     PIR3bits.SSP1IF = 0; // clear SSP interrupt flag
     if (SSP1CON2bits.ACKSTAT) { // if NACK then stop and return
         I2C_Stop();

@@ -31,7 +31,4 @@ void PIN_MANAGER_DigitalPins(void) {
 
 void PIN_MANAGER_WeakPullUpResistors(void) {
     // WEAK PULL UP RESISTORS (WPxbits.WPUxx = 1)
-    WPUCbits.WPUC3 = 1; // SCL line for I2C
-    WPUCbits.WPUC4 = 1; // SDA line for I2C
-    
 }

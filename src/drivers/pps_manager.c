@@ -19,6 +19,7 @@ void PPS_MANAGER_OutputPins(void) {
     // OUTPUT PPS SELECTION (RxyPPS = xxx)
     RB1PPS = 0x14;     // SCL is on RB1
     RB2PPS = 0x15;     // SDA is on RB2
+
 }
 
 void PPS_MANAGER_Lock(void) {
