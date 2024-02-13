@@ -1,4 +1,4 @@
-// pps_manager.h
+// pin_manager.h
 #ifndef PIN_MANAGER_H
 #define PIN_MANAGER_H
 
@@ -6,12 +6,14 @@
 
 void PIN_MANAGER_Initialize(void);
 
-void Input_Pins_Initialize(void);
+void PIN_MANAGER_InputPins(void);
 
-void Output_Pins_Initialize(void);
+void PIN_MANAGER_OutputPins(void);
 
-void Analog_Pins_Initialize(void);
+void PIN_MANAGER_AnalogPins(void);
 
-void Digital_Pins_Initialize(void);
+void PIN_MANAGER_DigitalPins(void);
+
+void PIN_MANAGER_WeakPullUpResistors(void);
 
 #endif

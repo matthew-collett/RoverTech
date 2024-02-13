@@ -3,7 +3,7 @@
 
 #define RGB_I2C_ADDR 0x39 // address of rgb sensor
 #define RGB_ENABLE   0x80 // ENABLE register
-#define RGB_ATIME    0x82 // ATIME register
+#define RGB_ATIME    0x81 // ATIME register
 #define RGB_CONTROL  0x8F // CONTROL register
 #define RGB_PON      0x01 // PON bit value (power on)
 #define RGB_AEN      0x02 // AEN bit value (rgb enable)

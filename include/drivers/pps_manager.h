@@ -1,4 +1,4 @@
-// pin_manager.h
+// pps_manager.h
 #ifndef PPS_MANAGER_H
 #define PPS_MANAGER_H
 
@@ -7,12 +7,12 @@
 
 void PPS_MANAGER_Initialize(void);
 
-void PPS_Input_Initialize(void);
+void PPS_MANAGER_InputPins(void);
 
-void PPS_Output_Initialize(void);
+void PPS_MANAGER_OutputPins(void);
 
-void PPS_Lock(void);
+void PPS_MANAGER_Lock(void);
 
-void PPS_Unlock(void);
+void PPS_MANAGER_Unlock(void);
 
 #endif

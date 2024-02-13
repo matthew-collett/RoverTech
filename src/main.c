@@ -5,17 +5,16 @@
 
 void main(void) {
     SYSTEM_Initialize();
-    RGB_SENSOR_Initialize();
+    //RGB_SENSOR_Initialize();
     
     while (1) {
-        unsigned char deviceId = RGB_SENSOR_ReadDeviceId();
+        unsigned char id = RGB_SENSOR_ReadDeviceId();
         int success = 0;
-        if (deviceId == 0xab) {
+        if (id == 0xAB) {
             success = 1;
         }
-        
-        
-        // Check if the clear value is not zero to avoid division by zero
+        break;
+//        RGBColours colours = RGB_SENSOR_ReadColours();
 //        if (colours.clear != 0) {
 //            // Normalize RGB values by the clear value
 //            float normRed = (float) colours.red;
