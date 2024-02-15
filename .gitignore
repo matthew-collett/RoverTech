@@ -13,6 +13,7 @@ nbproject/private/
 mcc_generated_files/
 *.mc3
 mcc-manifest-autosave.yml
+debug
 
 # Ignore auto-generated files
 **/auto_gen.doxy
