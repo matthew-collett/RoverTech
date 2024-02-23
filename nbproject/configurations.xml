@@ -276,8 +276,11 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-1fff"/>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <property key="programmerToGoFilePath"
                   value="/Users/matthewcollett/Documents/ECE3232Projects/RoverTech.X/debug/default/RoverTech_ptg"/>
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         <property key="programoptions.donoteraseauxmem" value="false"/>
