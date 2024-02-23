@@ -10,6 +10,7 @@
       </logicalFolder>
       <logicalFolder name="f3" displayName="peripherals" projectFiles="true">
         <itemPath>include/peripherals/rgb_sensor.h</itemPath>
+        <itemPath>include/peripherals/buzzer.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="system" projectFiles="true">
         <itemPath>include/system/system.h</itemPath>
@@ -28,11 +29,13 @@
       </logicalFolder>
       <logicalFolder name="f3" displayName="peripherals" projectFiles="true">
         <itemPath>src/peripherals/rgb_sensor.c</itemPath>
+        <itemPath>src/peripherals/buzzer.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="system" projectFiles="true">
         <itemPath>src/system/system.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="tasks" projectFiles="true">
+        <itemPath>src/tasks/optical_signal_decoding.c</itemPath>
       </logicalFolder>
       <itemPath>src/main.c</itemPath>
       <itemPath>src/tasks/optical_signal_decoding.c</itemPath>
@@ -49,7 +52,7 @@
         <platformTool>snap</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.46</languageToolchainVersion>
-        <platform>3</platform>
+        <platform>4</platform>
       </toolsSet>
       <packs>
         <pack name="PIC16F1xxxx_DFP" vendor="Microchip" version="1.24.387"/>
@@ -76,7 +79,7 @@
         <makeUseCleanTarget>false</makeUseCleanTarget>
         <makeCustomizationPreStep></makeCustomizationPreStep>
         <makeCustomizationPostStepEnabled>true</makeCustomizationPostStepEnabled>
-        <makeCustomizationPostStep>copy ${ImagePath} "D:\"</makeCustomizationPostStep>
+        <makeCustomizationPostStep>cp ${ImagePath} /Volumes/XPRESS</makeCustomizationPostStep>
         <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
@@ -90,7 +93,7 @@
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="true"/>
         <property key="extra-include-directories"
-                  value="include/drivers;include/peripherals;include/system;src;../../../../../Applications/microchip/xc8/v2.46/pic/include/proc;src/drivers;src/peripherals;src/system"/>
+                  value="include/drivers;include/peripherals;include/system;src;../../../../../Applications/microchip/xc8/v2.46/pic/include/proc;src/drivers;src/peripherals;src/system;src/tasks;include/tasks"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="garbage-collect-data" value="true"/>
         <property key="garbage-collect-functions" value="true"/>
@@ -118,7 +121,6 @@
       </HI-TECH-COMP>
       <HI-TECH-LINK>
         <property key="additional-options-checksum" value=""/>
-        <property key="additional-options-checksumAVR" value=""/>
         <property key="additional-options-code-offset" value=""/>
         <property key="additional-options-command-line" value=""/>
         <property key="additional-options-errata" value=""/>
@@ -256,7 +258,6 @@
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.simultaneous.debug" value="false"/>
         <property key="debugoptions.useswbreakpoints" value="true"/>
-        <property key="event.recorder.debugger.behavior" value="Running"/>
         <property key="event.recorder.enabled" value="false"/>
         <property key="event.recorder.scvd.files" value=""/>
         <property key="freeze.timers" value="false"/>
@@ -274,8 +275,11 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-1fff"/>
+<<<<<<< Updated upstream
         <property key="programmerToGoFilePath"
                   value="/Users/matthewcollett/Documents/ECE3232Projects/RoverTech.X/debug/default/RoverTech_ptg"/>
+=======
+>>>>>>> Stashed changes
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>

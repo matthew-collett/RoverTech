@@ -11,12 +11,13 @@ void PIN_MANAGER_Initialize(void) {
 
 void PIN_MANAGER_InputPins(void) {
     // INPUT PINS (TRISxbits.TRISxx = 1)
-    TRISBbits.TRISB1 = 1; // SCL line for I2C
-    TRISBbits.TRISB2 = 1; // SDA line for I2C
+    TRISCbits.TRISC4 = 1; // RC4 SCL line for I2C
+    TRISCbits.TRISC3 = 1; // RC3 SDA line for I2C
 }
 
 void PIN_MANAGER_OutputPins(void) {
     // OUTPUT PINS (TRISxbits.TRISxx = 0)
+    //TRISCbits.TRISC7 = 0; // RC7 for CCP PWM output
 }
 
 void PIN_MANAGER_AnalogPins(void) {
@@ -25,8 +26,9 @@ void PIN_MANAGER_AnalogPins(void) {
 
 void PIN_MANAGER_DigitalPins(void) {    
     // DIGITAL PINS (ANSELxbits.ANSxx = 0)
-    ANSELBbits.ANSB1 = 0;// SCL line for I2C
-    ANSELBbits.ANSB2 = 0; // SDA line for I2C
+    ANSELCbits.ANSC4 = 0;// RC4 SCL line for I2C
+    ANSELCbits.ANSC3 = 0; // RC3 SDA line for I2C
+    ANSELCbits.ANSC7 = 0; // RC7 for CCP PWM output
 }
 
 void PIN_MANAGER_WeakPullUpResistors(void) {

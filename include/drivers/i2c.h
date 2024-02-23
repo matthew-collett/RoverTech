@@ -3,6 +3,7 @@
 #define I2C_H
 
 #include <xc.h>
+#include "system.h"
 
 void I2C_Initialize(void);
 void I2C_Start(void);
