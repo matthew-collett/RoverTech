@@ -15,4 +15,10 @@ void BUZZER_PlayF4(void);
 
 void BUZZER_PlayA4(void);
 
+void BUZZER_Stop(void);
+
+void BUZZER_SetDutyCycle(unsigned int pr2);
+
+unsigned char BUZZER_CalculateFrequency(float frequency);
+
 #endif

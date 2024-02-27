@@ -4,7 +4,7 @@
 
 #include <xc.h>
 
-#define _XTAL_FREQ 4000000  // internal oscillator frequency (Fosc)
+#define _XTAL_FREQ 32000000  // internal oscillator frequency (Fosc)
 
 void SYSTEM_Initialize(void);
 

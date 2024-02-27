@@ -7,17 +7,21 @@
         <itemPath>include/drivers/i2c.h</itemPath>
         <itemPath>include/drivers/pps_manager.h</itemPath>
         <itemPath>include/drivers/interrupt_manager.h</itemPath>
+        <itemPath>include/drivers/uart.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="peripherals" projectFiles="true">
         <itemPath>include/peripherals/rgb_sensor.h</itemPath>
         <itemPath>include/peripherals/buzzer.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5" displayName="structs" projectFiles="true">
+        <itemPath>include/structs/rgb_colours.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="system" projectFiles="true">
         <itemPath>include/system/system.h</itemPath>
         <itemPath>include/system/config.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="tasks" projectFiles="true">
-        <itemPath>include/tasks/optical_signal_decoding.h</itemPath>
+        <itemPath>include/tasks/osd.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="src" displayName="src" projectFiles="true">
@@ -26,19 +30,22 @@
         <itemPath>src/drivers/i2c.c</itemPath>
         <itemPath>src/drivers/interrupt_manager.c</itemPath>
         <itemPath>src/drivers/pps_manager.c</itemPath>
+        <itemPath>src/drivers/uart.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="peripherals" projectFiles="true">
         <itemPath>src/peripherals/rgb_sensor.c</itemPath>
         <itemPath>src/peripherals/buzzer.c</itemPath>
       </logicalFolder>
+      <logicalFolder name="f5" displayName="structs" projectFiles="true">
+        <itemPath>src/structs/rgb_colours.c</itemPath>
+      </logicalFolder>
       <logicalFolder name="f2" displayName="system" projectFiles="true">
         <itemPath>src/system/system.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="tasks" projectFiles="true">
-        <itemPath>src/tasks/optical_signal_decoding.c</itemPath>
+        <itemPath>src/tasks/osd.c</itemPath>
       </logicalFolder>
       <itemPath>src/main.c</itemPath>
-      <itemPath>src/tasks/optical_signal_decoding.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
@@ -49,7 +56,7 @@
         <targetDevice>PIC16F18855</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>snap</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.46</languageToolchainVersion>
         <platform>4</platform>
@@ -93,7 +100,7 @@
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="true"/>
         <property key="extra-include-directories"
-                  value="include/drivers;include/peripherals;include/system;src;../../../../../Applications/microchip/xc8/v2.46/pic/include/proc;src/drivers;src/peripherals;src/system;src/tasks;include/tasks"/>
+                  value="include/drivers;include/peripherals;include/system;src;../../../../../Applications/microchip/xc8/v2.46/pic/include/proc;src/drivers;src/peripherals;src/system;src/tasks;include/tasks;src/structs;include/structs"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="garbage-collect-data" value="true"/>
         <property key="garbage-collect-functions" value="true"/>
@@ -275,14 +282,6 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-1fff"/>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        <property key="programmerToGoFilePath"
-                  value="/Users/matthewcollett/Documents/ECE3232Projects/RoverTech.X/debug/default/RoverTech_ptg"/>
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>

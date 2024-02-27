@@ -2,18 +2,19 @@
 #include "config.h"
 #include <xc.h>
 #include "system.h"
-#include "buzzer.h"
+#include "osd.h"
 
-int main(void) {
-    SYSTEM_Initialize();
-    BUZZER_Initialize();
-    unsigned char test = OSCCON2bits.COSC;
-    BUZZER_PlayC4();
-    
+void main(void) {
+    SYSTEM_Initialize();    
     while (1) {
-        
+        TRISAbits.TRISA5 = 1;
+        ANSELAbits.ANSA5 = 0;
+        if (!PORTAbits.RA0) {
+            OSD_PerformTask();
+        } else {
+            OSD_EndTask();
+        }
     }
-    return 0;
 }
 
 

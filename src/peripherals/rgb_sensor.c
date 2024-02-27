@@ -24,7 +24,7 @@ void RGB_SENSOR_Initialize(void) {
 }
 
 RGBColours RGB_SENSOR_ReadColours(void) {
-    struct RGBColours colours = {0};
+    struct RGBColours colours = RGB_COLOURS_Initialize();
     if (RGB_SENSOR_DataReady()) {
         colours.clear = RGB_SENSOR_ReadColourChannel(RGB_CLEARL, RGB_CLEARH);
         colours.red = RGB_SENSOR_ReadColourChannel(RGB_REDL, RGB_REDH);
@@ -34,9 +34,9 @@ RGBColours RGB_SENSOR_ReadColours(void) {
     return colours;
 }
 
-unsigned int RGB_SENSOR_ReadColourChannel(unsigned char lowByteAddr, unsigned char highByteAddr) {
-    unsigned char lowByte = I2C_ReadRegister(RGB_I2C_ADDR, lowByteAddr); // read low byte
-    unsigned char highByte = I2C_ReadRegister(RGB_I2C_ADDR, highByteAddr); // read high byte
+unsigned int RGB_SENSOR_ReadColourChannel(unsigned char lowByte, unsigned char highByte) {
+    unsigned char lowByte = I2C_ReadRegister(RGB_I2C_ADDR, lowByte); // read low byte
+    unsigned char highByte = I2C_ReadRegister(RGB_I2C_ADDR, highByte); // read high byte
     return ((unsigned int) highByte << 8) | lowByte; // concatenate low and high byte for colour
 }
 
@@ -45,7 +45,7 @@ unsigned char RGB_SENSOR_DataReady(void) {
     return status & 0x01; // check if AVALID bit is set
 }
 
-unsigned char RGB_SENSOR_ReadDeviceId(void) {
-    unsigned char deviceId = I2C_ReadRegister(RGB_I2C_ADDR, 0x92);
-    return deviceId;
+void RGB_SENSOR_Sleep(void) {
+    I2C_WriteRegister(RGB_I2C_ADDR, RGB_ENABLE, 0x00); // put sensor in sleep mode
+    __delay_ms(10);
 }

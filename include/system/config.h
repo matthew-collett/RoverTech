@@ -4,8 +4,8 @@
 
 // CONFIG1
 #pragma config FEXTOSC = OFF      // External Oscillator mode selection bits (EC above 8MHz; PFM set to high power)
-#pragma config RSTOSC = HFINT1    // Power-up default value for COSC bits (EXTOSC operating per FEXTOSC bits)
-#pragma config CLKOUTEN = ON      // Clock Out Enable bit (CLKOUT function is disabled; i/o or oscillator function on OSC2)
+#pragma config RSTOSC = HFINT32   // Power-up default value for COSC bits (EXTOSC operating per FEXTOSC bits)
+#pragma config CLKOUTEN = OFF     // Clock Out Enable bit (CLKOUT function is disabled; i/o or oscillator function on OSC2)
 #pragma config CSWEN = ON         // Clock Switch Enable bit (Writing to NOSC and NDIV is allowed)
 #pragma config FCMEN = OFF        // Fail-Safe Clock Monitor Enable bit (FSCM timer enabled)
 
