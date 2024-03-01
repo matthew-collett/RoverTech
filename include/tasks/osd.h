@@ -8,7 +8,11 @@
 #include "buzzer.h"
 #include "rgb_colours.h"
 
-void OSD_PerformTask();
+void OSD_StartTask(void);
+
+void OSD_PerformTask(void);
+
+void OSD_EndTask(void);
 
 RGBColours OSD_NormalizeColours(RGBColours rawColours);
 

@@ -10,7 +10,7 @@ void RGB_SENSOR_Initialize(void);
 
 RGBColours RGB_SENSOR_ReadColours(void);
 
-unsigned int RGB_SENSOR_ReadColourChannel(unsigned char lowByte, unsigned char highByte);
+unsigned int RGB_SENSOR_ReadColourChannel(unsigned char lowByteAddr, unsigned char highByteAddr);
 
 unsigned char RGB_SENSOR_DataReady(void);
 

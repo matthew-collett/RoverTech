@@ -5,7 +5,7 @@
 #define COLOUR_GREEN 2
 #define COLOUR_BLUE 3
 
-int lastDetectedColor = -1;
+int lastDetectedColour = -1;
 
 void OSD_StartTask(void) {
     RGB_SENSOR_Initialize();
@@ -15,10 +15,9 @@ void OSD_StartTask(void) {
 void OSD_PerformTask(void) {
     OSD_StartTask();
     RGBColours colours = OSD_NormalizeColours(RGB_SENSOR_ReadColours());
-    int currentDetectedColor = OSD_DetermineColour(colours);
-    if (currentDetectedColor != lastDetectedColor) {
-        __delay_ms(1000);
-        switch (currentDetectedColor) {
+    int currentDetectedColour = OSD_DetermineColour(colours);
+    if (currentDetectedColour != lastDetectedColour) {
+        switch (currentDetectedColour) {
             case COLOUR_RED:
                 BUZZER_PlayC4();
                 break;
@@ -32,7 +31,7 @@ void OSD_PerformTask(void) {
                 BUZZER_Stop(); 
                 break;
         }
-        lastDetectedColor = currentDetectedColor; 
+        lastDetectedColour = currentDetectedColour;
     }
 }
 

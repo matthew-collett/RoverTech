@@ -4,8 +4,6 @@
 #include "pin_manager.h"
 #include "pps_manager.h"
 #include "i2c.h"
-#include "rgb_sensor.h"
-#include "buzzer.h"
 
 void SYSTEM_Initialize() {
     INTERRUPT_MANAGER_Initialize();

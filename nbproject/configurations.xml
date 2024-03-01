@@ -85,7 +85,7 @@
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
         <makeUseCleanTarget>false</makeUseCleanTarget>
         <makeCustomizationPreStep></makeCustomizationPreStep>
-        <makeCustomizationPostStepEnabled>true</makeCustomizationPostStepEnabled>
+        <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep>cp ${ImagePath} /Volumes/XPRESS</makeCustomizationPostStep>
         <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
@@ -100,7 +100,7 @@
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="true"/>
         <property key="extra-include-directories"
-                  value="include/drivers;include/peripherals;include/system;src;../../../../../Applications/microchip/xc8/v2.46/pic/include/proc;src/drivers;src/peripherals;src/system;src/tasks;include/tasks;src/structs;include/structs"/>
+                  value="include;include/drivers;include/peripherals;include/structs;include/system;include/tasks;src;src/drivers;src/peripherals;src/structs;src/system;src/tasks;../../../../../Applications/microchip/xc8/v2.46/pic/include/proc"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="garbage-collect-data" value="true"/>
         <property key="garbage-collect-functions" value="true"/>

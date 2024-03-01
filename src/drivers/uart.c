@@ -8,7 +8,7 @@ void UART_SetBaudRate(unsigned int baud_rate);
 void UART_Initialize(void) {
     BAUD1CONbits.BRG16 = 1; // set 16-bit baud rate generator
 	TX1STAbits.BRGH = 1; // enable high baud rate
-    UART_SetBaudRate(BAUD_RATE) // set baud rate
+    UART_SetBaudRate(BAUD_RATE); // set baud rate
     TX1STAbits.SYNC = 0; // enable asynchronous mode
     RC1STAbits.SPEN = 1; // enable serial transport
     TX1STAbits.TXEN = 1; // enable transmitter
@@ -26,7 +26,7 @@ unsigned char UART_ReadByte(void) {
 }
 
 void UART_SetBaudRate(unsigned int baud_rate) {
-    unsigned int generator_value = (_XTAL_FREQ / (4 * BAUD_RATE)) - 1; // calculate generator value
+    unsigned int generator_value = (unsigned int) ((_XTAL_FREQ / (4 * baud_rate)) - 1); // calculate generator value
     SPBRGL = generator_value & 0xFF; // load 8 LSB
     SPBRGH = (generator_value >> 8) & 0xFF; // load 8 MSB
 }
