@@ -28,6 +28,7 @@ void PIN_MANAGER_InputPins(void) {
 void PIN_MANAGER_OutputPins(void) {
     // OUTPUT PINS (TRISxbits.TRISxx = 0)
     TRISCbits.TRISC7 = 0; // RC7 for CCP PWM output
+    TRISCbits.TRISC5 = 0;
 }
 
 void PIN_MANAGER_AnalogPins(void) {
@@ -46,6 +47,8 @@ void PIN_MANAGER_DigitalPins(void) {
 
     ANSELCbits.ANSC4 = 0; // SCL line for I2C
     ANSELCbits.ANSC3 = 0; // SDA line for I2C
+    
+    ANSELCbits.ANSC5 = 0;
     
     ANSELCbits.ANSC7 = 0; // RC7 for CCP PWM output
 }

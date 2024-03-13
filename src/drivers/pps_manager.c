@@ -21,6 +21,13 @@ void PPS_MANAGER_OutputPins(void) {
 //    RC3PPS = 0x15; // RC3 is SDA output for I2C
     
     
+<<<<<<< Updated upstream
+=======
+    RB1PPS = 0x14;     // SCL is on RB1
+    RB2PPS = 0x15;     // SDA is on RB2
+    RC5PPS = 0x10;
+    
+>>>>>>> Stashed changes
     RC7PPS = 0x09; // RC7 is CCP PWM output
 }
 
