@@ -13,8 +13,6 @@ void PPS_MANAGER_InputPins(void) {
 //    SSP1CLKPPS = 0x14; // RC4 is SCL input for I2C
 //    SSP1DATPPS = 0x13; // RC3 is SDA input for I2C
     
-    SSP1CLKPPS = 0x09; // SCL is on RB1
-    SSP1DATPPS = 0x0A; // SDA is on RB2
 }
 
 void PPS_MANAGER_OutputPins(void) {
@@ -22,9 +20,6 @@ void PPS_MANAGER_OutputPins(void) {
 //    RC4PPS = 0x14; // RC4 is SCL output for I2C
 //    RC3PPS = 0x15; // RC3 is SDA output for I2C
     
-    
-    RB1PPS = 0x14;     // SCL is on RB1
-    RB2PPS = 0x15;     // SDA is on RB2
     
     RC7PPS = 0x09; // RC7 is CCP PWM output
 }

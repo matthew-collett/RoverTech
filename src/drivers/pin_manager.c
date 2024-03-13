@@ -14,8 +14,15 @@ void PIN_MANAGER_InputPins(void) {
 //    TRISCbits.TRISC4 = 1; // RC4 SCL line for I2C
 //    TRISCbits.TRISC3 = 1; // RC3 SDA line for I2C
     
-    TRISBbits.TRISB1 = 1; // SCL line for I2C
-    TRISBbits.TRISB2 = 1; // SDA line for I2C
+    TRISCbits.TRISC4 = 1; // SCL line for I2C
+    TRISCbits.TRISC3 = 1; // SDA line for I2C
+    
+    
+
+    //trisa = 1 Device 
+    TRISBbits.TRISB0 = 1;
+    TRISBbits.TRISB1 = 1;
+    TRISBbits.TRISB2 = 1;
 }
 
 void PIN_MANAGER_OutputPins(void) {
@@ -25,6 +32,10 @@ void PIN_MANAGER_OutputPins(void) {
 
 void PIN_MANAGER_AnalogPins(void) {
     // ANALOG PINS (ANSELxbits.ANSxx = 1)
+    // ansel = 1 analog for 3 line follower sensors
+    ANSELBbits.ANSB0 = 1;
+    ANSELBbits.ANSB1 = 1;
+    ANSELBbits.ANSB2 = 1;
 }
 
 void PIN_MANAGER_DigitalPins(void) {    
@@ -32,9 +43,9 @@ void PIN_MANAGER_DigitalPins(void) {
 //    ANSELCbits.ANSC4 = 0;// RC4 SCL line for I2C
 //    ANSELCbits.ANSC3 = 0; // RC3 SDA line for I2C
     
-    
-    ANSELBbits.ANSB1 = 0;// SCL line for I2C
-    ANSELBbits.ANSB2 = 0; // SDA line for I2C
+
+    ANSELCbits.ANSC4 = 0; // SCL line for I2C
+    ANSELCbits.ANSC3 = 0; // SDA line for I2C
     
     ANSELCbits.ANSC7 = 0; // RC7 for CCP PWM output
 }
