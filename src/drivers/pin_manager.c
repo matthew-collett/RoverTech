@@ -50,6 +50,8 @@ void PIN_MANAGER_DigitalPins(void) {
     
     ANSELCbits.ANSC5 = 0;
     
+    ANSELCbits.ANSC5 = 0;
+    
     ANSELCbits.ANSC7 = 0; // RC7 for CCP PWM output
 }
 
