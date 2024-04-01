@@ -1,21 +1,18 @@
-// optical_signal_decoding.h
+// osd.h
 #ifndef OSD_H
 #define OSD_H
 
 #include <xc.h>
-#include "system.h"
-#include "rgb_sensor.h"
-#include "buzzer.h"
-#include "rgb_colours.h"
+#include "task.h"
 
-void OSD_StartTask(void);
+extern Task osdTask;
 
-void OSD_PerformTask(void);
+void OSD_Start(void);
 
-void OSD_EndTask(void);
+void OSD_Run(void);
 
-RGBColours OSD_NormalizeColours(RGBColours rawColours);
+void OSD_End(void);
 
-int OSD_DetermineColour(RGBColours colours);
+int OSD_IsEnabled(void);
 
 #endif

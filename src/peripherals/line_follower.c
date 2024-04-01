@@ -1,14 +1,6 @@
-/*
- * File:   line_follower.c
- * Author: Eric
- *
- * Created on March 13, 2024, 2:56 PM
- */
-
-
-#include <xc.h>
+// line_follower.c
 #include "line_follower.h"
-#include "line_follower_sensors.h"
+#include "system.h"
 
 struct LineFollowerSensors sensors = {.left = 0, .middle = 0, .right = 0};
 
@@ -32,7 +24,7 @@ void LINE_FOLLOWER_Initialize(void) {
 }
 
 
-LineFollowerSensors LINE_FOLLOWER_FollowLine(void) {
+LineFollowerSensors LINE_FOLLOWER_ReadLineData(void) {
     // IF SOMETHING IS WRONG MAKE SURE LEFT RIGHT AND CENTER IS SET PROPERLY !!!!!!!!!!!!!!!!!
     unsigned int result;
     for (int i = 0; i < 3; i++) {
@@ -70,5 +62,6 @@ LineFollowerSensors LINE_FOLLOWER_FollowLine(void) {
     __delay_ms(100);
 }
 
-
-
+void LINE_FOLLOWER_Stop(void) {
+    ADCON0 = 0;
+}

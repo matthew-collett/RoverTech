@@ -12,9 +12,15 @@
       <logicalFolder name="f3" displayName="peripherals" projectFiles="true">
         <itemPath>include/peripherals/rgb_sensor.h</itemPath>
         <itemPath>include/peripherals/buzzer.h</itemPath>
+        <itemPath>include/peripherals/pcls.h</itemPath>
+        <itemPath>include/peripherals/line_follower.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f5" displayName="structs" projectFiles="true">
         <itemPath>include/structs/rgb_colours.h</itemPath>
+        <itemPath>include/structs/motor_settings.h</itemPath>
+        <itemPath>include/structs/line_follower_sensors.h</itemPath>
+        <itemPath>include/structs/controller_state.h</itemPath>
+        <itemPath>include/structs/task.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="system" projectFiles="true">
         <itemPath>include/system/system.h</itemPath>
@@ -22,6 +28,8 @@
       </logicalFolder>
       <logicalFolder name="f4" displayName="tasks" projectFiles="true">
         <itemPath>include/tasks/osd.h</itemPath>
+        <itemPath>include/tasks/task_manager.h</itemPath>
+        <itemPath>include/tasks/trail_tracking.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="src" displayName="src" projectFiles="true">
@@ -35,19 +43,33 @@
       <logicalFolder name="f3" displayName="peripherals" projectFiles="true">
         <itemPath>src/peripherals/rgb_sensor.c</itemPath>
         <itemPath>src/peripherals/buzzer.c</itemPath>
+        <itemPath>src/peripherals/pcls.c</itemPath>
+        <itemPath>src/peripherals/line_follower.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f5" displayName="structs" projectFiles="true">
         <itemPath>src/structs/rgb_colours.c</itemPath>
+        <itemPath>src/structs/motor_settings.c</itemPath>
+        <itemPath>src/structs/task.c</itemPath>
+        <itemPath>src/structs/controller_state.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="system" projectFiles="true">
         <itemPath>src/system/system.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="tasks" projectFiles="true">
         <itemPath>src/tasks/osd.c</itemPath>
+        <itemPath>src/tasks/task_manager.c</itemPath>
+        <itemPath>src/tasks/trail_tracking.c</itemPath>
       </logicalFolder>
       <itemPath>src/main.c</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>src/peripherals</Elem>
+    <Elem>src/tasks</Elem>
+    <Elem>include/structs</Elem>
+    <Elem>include/tasks</Elem>
+    <Elem>include/peripherals</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">

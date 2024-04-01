@@ -3,12 +3,13 @@
 #define UART_H
 
 #include <xc.h>
-#include "system.h"
 
 void UART_Initialize(void);
 
-void UART_SendByte(unsigned char byte);
+void UART_SendByte(const unsigned char byte);
 
 unsigned char UART_ReadByte(void);
+
+void UART_SetBaudRate(void);
 
 #endif

@@ -1,5 +1,7 @@
 // rgb_sensor.c
 #include "rgb_sensor.h"
+#include "system.h"
+#include "i2c.h"
 
 #define RGB_I2C_ADDR 0x39 // address of rgb sensor
 #define RGB_ENABLE   0x80 // ENABLE register
@@ -24,7 +26,7 @@ void RGB_SENSOR_Initialize(void) {
 }
 
 RGBColours RGB_SENSOR_ReadColours(void) {
-    struct RGBColours colours = RGB_COLOURS_Initialize();
+    RGBColours colours = {0};
     if (RGB_SENSOR_DataReady()) {
         colours.clear = RGB_SENSOR_ReadColourChannel(RGB_CLEARL, RGB_CLEARH);
         colours.red = RGB_SENSOR_ReadColourChannel(RGB_REDL, RGB_REDH);
@@ -34,7 +36,10 @@ RGBColours RGB_SENSOR_ReadColours(void) {
     return colours;
 }
 
-unsigned int RGB_SENSOR_ReadColourChannel(unsigned char lowByteAddr, unsigned char highByteAddr) {
+unsigned int RGB_SENSOR_ReadColourChannel(
+    const unsigned char lowByteAddr, 
+    const unsigned char highByteAddr
+) {
     unsigned char lowByte = I2C_ReadRegister(RGB_I2C_ADDR, lowByteAddr); // read low byte
     unsigned char highByte = I2C_ReadRegister(RGB_I2C_ADDR, highByteAddr); // read high byte
     return ((unsigned int) highByte << 8) | lowByte; // concatenate low and high byte for colour

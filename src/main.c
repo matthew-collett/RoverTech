@@ -1,14 +1,12 @@
 // main.c
 #include "config.h"
-#include <xc.h>
 #include "system.h"
-#include "buzzer.h"
 
-void main(void) {
-    SYSTEM_Initialize();  
-    BUZZER_Initialize();
-    BUZZER_PlayC4();
-    while (1) {}
+int main(void) {
+    SYSTEM_Initialize(); 
+    SYSTEM_Run();
+    SYSTEM_Terminate();
+    return 0;
 }
 
 

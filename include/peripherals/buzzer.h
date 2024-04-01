@@ -3,11 +3,10 @@
 #define BUZZER_H
 
 #include <xc.h>
-#include "system.h"
 
 void BUZZER_Initialize(void);
 
-void BUZZER_PlayNote(float frequency);
+void BUZZER_PlayNote(const float frequency);
 
 void BUZZER_PlayC4(void);
 
@@ -17,8 +16,6 @@ void BUZZER_PlayA4(void);
 
 void BUZZER_Stop(void);
 
-void BUZZER_SetDutyCycle(unsigned int pr2);
-
-unsigned char BUZZER_CalculateFrequency(float frequency);
+void BUZZER_SetDutyCycle(const unsigned short pr2);
 
 #endif

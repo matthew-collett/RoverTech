@@ -4,7 +4,6 @@
 
 #include <xc.h>
 
-
 void PPS_MANAGER_Initialize(void);
 
 void PPS_MANAGER_InputPins(void);
