@@ -18,7 +18,7 @@ void BUZZER_Initialize(void) {
     while(!PIR4bits.TMR2IF); // wait for Timer2 interrupt
 }
 
-void BUZZER_PlayNote(const float frequency) {
+static void BUZZER_PlayNote(const float frequency) {
     PR2 = (unsigned char) PWM_FREQUENCY(frequency); // load PR2 with PWM frequency
     BUZZER_SetDutyCycle(PR2); // set duty cycle to 50%
 }
@@ -41,7 +41,7 @@ void BUZZER_Stop(void) {
     T2CON = 0x00; // disable Timer2
 }
 
-void BUZZER_SetDutyCycle(const unsigned short pr2) {
+static void BUZZER_SetDutyCycle(const unsigned short pr2) {
     unsigned short dutyCycle = (unsigned short) DUTY_CYCLE(pr2); // calculate duty cycle
     CCPR1L = dutyCycle & 0xFF; // load 8 LSB of duty cycle
     CCPR1H = (dutyCycle >> 8) & 0x03; // load 2 MSB of duty cycle

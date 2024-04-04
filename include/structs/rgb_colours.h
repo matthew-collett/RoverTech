@@ -9,10 +9,10 @@
 #define COLOUR_BLUE 3
 
 typedef struct RGBColours {
-    unsigned int red;
-    unsigned int green;
-    unsigned int blue;
-    unsigned int clear;
+    unsigned short red;
+    unsigned short green;
+    unsigned short blue;
+    unsigned short clear;
 } RGBColours;
 
 RGBColours RGB_COLOURS_Normalize(const RGBColours rawColours);

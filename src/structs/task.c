@@ -13,5 +13,3 @@ void TASK_ScheduleTask(Task* task) {
         task->isRunning = 0;
     }
 }
-
-

@@ -21,10 +21,10 @@ void TRAIL_TRACKING_End(void) {
 }
 
 int TRAIL_TRACKING_IsEnabled(void) {
-    return controller->switchD == TRAIL_TRACKING_ENABLE;
+    return controller->switchA == TRAIL_TRACKING_ENABLE;
 }
 
-int TRAIL_TRACKING_DetermineDirection(const LineFollowerSensors sensors) {
+static int TRAIL_TRACKING_DetermineDirection(const LineFollowerSensors sensors) {
     // Case 1: Left sensor and right sensors are reading white and middle sensor is reading black. Drive forward
     if (sensors.left <= BLACK_THRESHOLD && 
         sensors.middle > BLACK_THRESHOLD && 

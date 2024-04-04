@@ -4,9 +4,9 @@
 RGBColours RGB_COLOURS_Normalize(const RGBColours rawColours) {
     RGBColours normalizedColours = {0}; // initialize colours to 0
     if (rawColours.clear != 0) {
-        normalizedColours.red = rawColours.red / rawColours.clear; // normalize red
-        normalizedColours.green = rawColours.green / rawColours.clear; // normalize green
-        normalizedColours.blue = rawColours.blue / rawColours.clear; // normalize blue
+        normalizedColours.red = (unsigned short) (((float) rawColours.red / rawColours.clear) * 10); // normalize red
+        normalizedColours.green = (unsigned short) (((float) rawColours.green / rawColours.clear) * 10); // normalize green
+        normalizedColours.blue = (unsigned short) (((float) rawColours.blue / rawColours.clear) * 10); // normalize blue
     }
     return normalizedColours; // return normalized colour struct
 }

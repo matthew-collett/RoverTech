@@ -10,19 +10,19 @@ void I2C_Initialize(void) {
     SSP1ADD = SSPADD; // baud rate generator
 }
 
-void I2C_Start(void) {
+static void I2C_Start(void) {
     SSP1CON2bits.SEN = 1; // initiate start condition on SDA and SCL pins
     while(SSP1CON2bits.SEN); // wait until start condition is not idle
     PIR3bits.SSP1IF = 0; // clear SSP interrupt flag
 }
 
-void I2C_RepeatedStart(void) {
+static void I2C_RepeatedStart(void) {
     SSP1CON2bits.RSEN = 1; // initiate repeated start condition on SDA and SCL pins
     while(SSP1CON2bits.RSEN); // wait until repeated start condition is not idle
     PIR3bits.SSP1IF = 0; // clear SSP interrupt flag
 }
 
-void I2C_Stop(void) {
+static void I2C_Stop(void) {
     SSP1CON2bits.PEN = 1; // initiate stop condition on SDA and SCL pins
     while(SSP1CON2bits.PEN); // wait until stop condition is not idle
     PIR3bits.SSP1IF = 0; // clear SSP interrupt flag

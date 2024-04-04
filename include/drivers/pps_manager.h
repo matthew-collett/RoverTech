@@ -6,12 +6,12 @@
 
 void PPS_MANAGER_Initialize(void);
 
-void PPS_MANAGER_InputPins(void);
+static void PPS_MANAGER_InputPins(void);
 
-void PPS_MANAGER_OutputPins(void);
+static void PPS_MANAGER_OutputPins(void);
 
-void PPS_MANAGER_Lock(void);
+static void PPS_MANAGER_Lock(void);
 
-void PPS_MANAGER_Unlock(void);
+static void PPS_MANAGER_Unlock(void);
 
 #endif

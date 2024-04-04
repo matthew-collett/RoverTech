@@ -19,10 +19,10 @@ MotorSettings* MOTOR_SETTINGS_MovementSettings(
 
 MotorSettings* MOTOR_SETTINGS_AutonomousSettings(const int track);
 
-int MOTOR_SETTINGS_ComputeDeviation(const unsigned short joystick);
+static int MOTOR_SETTINGS_ComputeDeviation(const unsigned short joystick);
 
-unsigned char MOTOR_SETTINGS_ResolveDirection(const int deviation);
+static unsigned char MOTOR_SETTINGS_ResolveDirection(const int deviation);
 
-unsigned char MOTOR_SETTINGS_ClampSpeed(const int speed);
+static unsigned char MOTOR_SETTINGS_ClampSpeed(const int speed);
 
 #endif

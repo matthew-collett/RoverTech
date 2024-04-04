@@ -25,7 +25,7 @@ unsigned char UART_ReadByte(void) {
     return RCREG; // read received data
 }
 
-void UART_SetBaudRate(void) {
+static void UART_SetBaudRate(void) {
     const unsigned short spbrg = SPBRG; // baud rate generator
     SPBRGL = spbrg & 0xFF; // load 8 LSB
     SPBRGH = spbrg >> 8; // load 8 MSB

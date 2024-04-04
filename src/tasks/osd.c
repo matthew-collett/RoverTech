@@ -1,7 +1,6 @@
 // osd.c
 #include "osd.h"
 #include "system.h"
-#include "task.h"
 #include "rgb_sensor.h"
 #include "rgb_colours.h"
 #include "buzzer.h"

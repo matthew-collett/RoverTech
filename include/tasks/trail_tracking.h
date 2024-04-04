@@ -23,6 +23,6 @@ void TRAIL_TRACKING_End(void);
 
 int TRAIL_TRACKING_IsEnabled(void);
 
-int TRAIL_TRACKING_DetermineDirection(const LineFollowerSensors sensors);
+static int TRAIL_TRACKING_DetermineDirection(const LineFollowerSensors sensors);
 
 #endif

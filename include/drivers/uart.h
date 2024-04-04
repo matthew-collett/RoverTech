@@ -10,6 +10,6 @@ void UART_SendByte(const unsigned char byte);
 
 unsigned char UART_ReadByte(void);
 
-void UART_SetBaudRate(void);
+static void UART_SetBaudRate(void);
 
 #endif

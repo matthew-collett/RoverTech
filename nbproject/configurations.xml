@@ -30,6 +30,8 @@
         <itemPath>include/tasks/osd.h</itemPath>
         <itemPath>include/tasks/task_manager.h</itemPath>
         <itemPath>include/tasks/trail_tracking.h</itemPath>
+        <itemPath>include/tasks/ore_type.h</itemPath>
+        <itemPath>include/tasks/laser_control.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="src" displayName="src" projectFiles="true">
@@ -59,6 +61,8 @@
         <itemPath>src/tasks/osd.c</itemPath>
         <itemPath>src/tasks/task_manager.c</itemPath>
         <itemPath>src/tasks/trail_tracking.c</itemPath>
+        <itemPath>src/tasks/ore_type.c</itemPath>
+        <itemPath>src/tasks/laser_control.c</itemPath>
       </logicalFolder>
       <itemPath>src/main.c</itemPath>
     </logicalFolder>
@@ -78,7 +82,7 @@
         <targetDevice>PIC16F18855</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>snap</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.46</languageToolchainVersion>
         <platform>4</platform>
@@ -107,7 +111,7 @@
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
         <makeUseCleanTarget>false</makeUseCleanTarget>
         <makeCustomizationPreStep></makeCustomizationPreStep>
-        <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
+        <makeCustomizationPostStepEnabled>true</makeCustomizationPostStepEnabled>
         <makeCustomizationPostStep>cp ${ImagePath} /Volumes/XPRESS</makeCustomizationPostStep>
         <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
@@ -304,6 +308,8 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-1fff"/>
+        <property key="programmerToGoFilePath"
+                  value="/Users/matthewcollett/Documents/ECE3232Projects/RoverTech.X/debug/default/RoverTech_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>

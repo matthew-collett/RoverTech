@@ -4,11 +4,11 @@
 
 #include <xc.h>
 
-void I2C_Start(void);
+static void I2C_Start(void);
 
-void I2C_RepeatedStart(void);
+static void I2C_RepeatedStart(void);
 
-void I2C_Stop(void);
+static void I2C_Stop(void);
 
 void I2C_SendByte(const unsigned char byte);
 

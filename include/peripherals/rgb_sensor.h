@@ -9,12 +9,12 @@ void RGB_SENSOR_Initialize(void);
 
 RGBColours RGB_SENSOR_ReadColours(void);
 
-unsigned int RGB_SENSOR_ReadColourChannel(
+static unsigned short RGB_SENSOR_ReadColourChannel(
     const unsigned char lowByteAddr, 
     const unsigned char highByteAddr
 );
 
-unsigned char RGB_SENSOR_DataReady(void);
+static unsigned char RGB_SENSOR_DataReady(void);
 
 void RGB_SENSOR_Sleep(void);
 

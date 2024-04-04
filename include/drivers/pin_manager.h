@@ -6,14 +6,14 @@
 
 void PIN_MANAGER_Initialize(void);
 
-void PIN_MANAGER_InputPins(void);
+static void PIN_MANAGER_InputPins(void);
 
-void PIN_MANAGER_OutputPins(void);
+static void PIN_MANAGER_OutputPins(void);
 
-void PIN_MANAGER_AnalogPins(void);
+static void PIN_MANAGER_AnalogPins(void);
 
-void PIN_MANAGER_DigitalPins(void);
+static void PIN_MANAGER_DigitalPins(void);
 
-void PIN_MANAGER_WeakPullUpResistors(void);
+static void PIN_MANAGER_WeakPullUpResistors(void);
 
 #endif
