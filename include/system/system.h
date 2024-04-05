@@ -4,6 +4,7 @@
 
 #include <xc.h>
 #include "controller_state.h"
+#include "pcls_info.h"
 #include "interrupt_manager.h"
 #include "pin_manager.h"
 #include "pps_manager.h"
@@ -15,6 +16,7 @@
 #define _XTAL_FREQ 32000000  // internal oscillator frequency (Fosc)
 
 extern ControllerState* controller; // global controller state variable
+extern PCLSInfo* pclsInfo; // global PCLS info variable
 
 void SYSTEM_Initialize(void);
 

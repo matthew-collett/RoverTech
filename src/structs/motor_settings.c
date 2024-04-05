@@ -3,17 +3,18 @@
 #include "system.h"
 #include "trail_tracking.h"
 
-#define JOYSTICK_DEADZONE 100
+#define JOYSTICK_DEADZONE 200
 #define JOYSTICK_CENTER 1500
 #define DIRECTION_BRAKE 0
 #define DIRECTION_FORWARD 1
 #define DIRECTION_BACKWARD 2
-#define MIN 1000
-#define MAX 2000
-#define AUTONOMOUS_SPEED 100
-#define AUTONOMOUS_TURN_FACTOR 0.1
+#define MIN_POT 1000
+#define MAX_POT 2000
+#define AUTONOMOUS_SPEED 75
+#define TURN_FACTOR 2
 
-#define CALC_SPEED(pot) ((pot - MIN) / 10)
+#define CALC_SPEED(pot) ((pot - MIN_POT) / 10)
+#define MAX(a, b) (a > b ? a : b)
 
 MotorSettings* MOTOR_SETTINGS_MovementSettings(
     const unsigned short rightJoystickX,
@@ -21,28 +22,46 @@ MotorSettings* MOTOR_SETTINGS_MovementSettings(
     const unsigned short potentiometerA
 ) {
     MotorSettings* settings = controller->motorSettings;
-    unsigned char baseSpeed = (unsigned char) CALC_SPEED(potentiometerA);
 
-    // compute deviation from center
-    int yDeviation = MOTOR_SETTINGS_ComputeDeviation(rightJoystickY);
-    int xDeviation = MOTOR_SETTINGS_ComputeDeviation(rightJoystickX);
+    // Calculate speed from potentiometer value
+    unsigned char speed = (unsigned char) CALC_SPEED(potentiometerA);
 
-    // set direction based on y deviation
-    settings->motorADirection = MOTOR_SETTINGS_ResolveDirection(yDeviation);
-    settings->motorBDirection = MOTOR_SETTINGS_ResolveDirection(yDeviation);
+    // Determine the direction and turning
+    if (rightJoystickY > JOYSTICK_CENTER + JOYSTICK_DEADZONE) {
+        // Forward
+        settings->motorADirection = DIRECTION_FORWARD;
+        settings->motorBDirection = DIRECTION_FORWARD;
+    } else if (rightJoystickY < JOYSTICK_CENTER - JOYSTICK_DEADZONE) {
+        // Backward
+        settings->motorADirection = DIRECTION_BACKWARD;
+        settings->motorBDirection = DIRECTION_BACKWARD;
+    } else {
+        // Brake
+        settings->motorADirection = DIRECTION_BRAKE;
+        settings->motorBDirection = DIRECTION_BRAKE;
+    }
 
-    // adjust speeds for turning based on x deviation
-    int aSpeedAdjustment = (xDeviation * baseSpeed) / 100;
-    int bSpeedAdjustment = (-xDeviation * baseSpeed) / 100;
+    // Calculate turn based on right joystick X-axis
+    int turnDifference = (int) rightJoystickX - JOYSTICK_CENTER;
+    if (turnDifference > JOYSTICK_DEADZONE) {
+        // Turning Right: Reduce speed of right motor
+        settings->motorASpeed = (unsigned char) MAX(0, speed - abs(turnDifference / TURN_FACTOR));
+        settings->motorBSpeed = speed;
+    } else if (turnDifference < -JOYSTICK_DEADZONE) {
+        // Turning Left: Reduce speed of left motor
+        settings->motorASpeed = speed;
+        settings->motorBSpeed = (unsigned char) MAX(0, speed - abs(turnDifference / TURN_FACTOR));
+    } else {
+        // Not turning
+        settings->motorASpeed = speed;
+        settings->motorBSpeed = speed;
+    }
 
-    // set motor speeds
-    settings->motorASpeed = MOTOR_SETTINGS_ClampSpeed(baseSpeed + aSpeedAdjustment);
-    settings->motorBSpeed = MOTOR_SETTINGS_ClampSpeed(baseSpeed + bSpeedAdjustment);
     return settings;
 }
 
 MotorSettings* MOTOR_SETTINGS_AutonomousSettings(const int track) {
-    MotorSettings* settings = controller->motorSettings;;
+    MotorSettings* settings = controller->motorSettings;
     settings->motorADirection = DIRECTION_FORWARD;
     settings->motorASpeed = AUTONOMOUS_SPEED;
     settings->motorBDirection = DIRECTION_FORWARD;
@@ -50,11 +69,15 @@ MotorSettings* MOTOR_SETTINGS_AutonomousSettings(const int track) {
     switch (track) {
         case TRACK_RIGHT:
             // turn right
-            settings->motorBSpeed = (unsigned char) (AUTONOMOUS_SPEED * AUTONOMOUS_TURN_FACTOR);
+            settings->motorASpeed = 100;
+            settings->motorBSpeed = 100;
+            settings->motorASpeed = DIRECTION_BACKWARD;
             break;
         case TRACK_LEFT:
             // turn left
-            settings->motorASpeed = (unsigned char) (AUTONOMOUS_SPEED * AUTONOMOUS_TURN_FACTOR);
+            settings->motorASpeed = 100;
+            settings->motorBSpeed = 100;
+            settings->motorBSpeed = DIRECTION_BACKWARD;
             break;
         case TRACK_FINISHED:
             // stop rover
@@ -65,28 +88,4 @@ MotorSettings* MOTOR_SETTINGS_AutonomousSettings(const int track) {
             break;
     }
     return settings;
-}
-
-static int MOTOR_SETTINGS_ComputeDeviation(const unsigned short joystick) {
-    int deviation = (int) (joystick - JOYSTICK_CENTER); // calculate deviation
-    if (abs(deviation) < JOYSTICK_DEADZONE) {
-        return 0; // inside dead zone
-    }
-    // scale deviation to -100 to 100 range outside dead zone
-    deviation = (deviation * 100) / (MAX - JOYSTICK_CENTER - JOYSTICK_DEADZONE);
-    return deviation > 100 ? 100 : (deviation < -100 ? -100 : deviation);
-}
-
-static unsigned char MOTOR_SETTINGS_ResolveDirection(const int deviation) {
-    if (deviation == 0) {
-        return DIRECTION_BRAKE;
-    } else if (deviation > 0) {
-        return DIRECTION_FORWARD;
-    } else {
-        return DIRECTION_BACKWARD;
-    }
-} 
-
-static unsigned char MOTOR_SETTINGS_ClampSpeed(const int speed) {
-    return (unsigned char) (speed > 100 ? 100 : (speed < 0 ? 0 : speed));
 }

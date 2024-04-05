@@ -29,6 +29,12 @@
 
 #define SHOOT_LASER_COMMAND_HIGH_CALIBER_SHOT 0x0002
 
+#define MSG_REQUEST_REPAIR_CODE_LASER_COMMAND 0x0903
+#define PAYLOAD_SIZE_REQUEST_REPAIR_CODE_LASER_COMMAND 0x0000
+
+#define MSG_TRANSMIT_REPAIR_CODE_LASER_COMMAND 0x0904
+#define PAYLOAD_SIZE_TRANSMIT_REPAIR_CODE_LASER_COMMAND 0x0001
+
 #define MSG_UNKNOWN_INVALID_ID 0x0003
 
 void PCLS_GetPCLSInfoCommand(void) {
@@ -45,6 +51,11 @@ void PCLS_GetPCLSInfoResponse(void) {
         return;
     }
     PCLS_ReadShort(); // read payload size
+    pclsInfo->teamId = UART_ReadByte(); // read team id
+    pclsInfo->playerId = UART_ReadByte(); // read player id
+    pclsInfo->health = PCLS_ReadShort(); // read overall heath
+    pclsInfo->shieldFlag = UART_ReadByte(); // read shield flag
+    pclsInfo->repairFlag = UART_ReadByte(); // read repair flag
 }
 
 void PCLS_GetUserDataCommand(void) {
@@ -104,6 +115,16 @@ void PCLS_ShootLaserCommand(void) {
     PCLS_StartMessage(MSG_SHOOT_LASER_COMMAND); // start message
     PCLS_SendPayloadSize(PAYLOAD_SIZE_SHOOT_LASER_COMMAND); // send payload size
     UART_SendByte(SHOOT_LASER_COMMAND_HIGH_CALIBER_SHOT); // send enable
+}
+
+void PCLS_RequestRepairCodeLaserCommand(void) {
+    PCLS_StartMessage(MSG_REQUEST_REPAIR_CODE_LASER_COMMAND); // start message
+    PCLS_SendPayloadSize(PAYLOAD_SIZE_REQUEST_REPAIR_CODE_LASER_COMMAND); // send payload size    
+}
+
+void PCLS_TransmitRepairCodeLaserCommand(void) {
+    PCLS_StartMessage(MSG_TRANSMIT_REPAIR_CODE_LASER_COMMAND); // start message
+    PCLS_SendPayloadSize(PAYLOAD_SIZE_TRANSMIT_REPAIR_CODE_LASER_COMMAND); // send payload size    
 }
 
 static void PCLS_StartMessage(const unsigned short messageId) {

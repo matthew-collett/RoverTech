@@ -21,6 +21,7 @@
         <itemPath>include/structs/line_follower_sensors.h</itemPath>
         <itemPath>include/structs/controller_state.h</itemPath>
         <itemPath>include/structs/task.h</itemPath>
+        <itemPath>include/structs/pcls_info.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="system" projectFiles="true">
         <itemPath>include/system/system.h</itemPath>
@@ -53,6 +54,7 @@
         <itemPath>src/structs/motor_settings.c</itemPath>
         <itemPath>src/structs/task.c</itemPath>
         <itemPath>src/structs/controller_state.c</itemPath>
+        <itemPath>src/structs/pcls_info.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="system" projectFiles="true">
         <itemPath>src/system/system.c</itemPath>
@@ -82,7 +84,7 @@
         <targetDevice>PIC16F18855</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>snap</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.46</languageToolchainVersion>
         <platform>4</platform>
@@ -308,8 +310,6 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-1fff"/>
-        <property key="programmerToGoFilePath"
-                  value="/Users/matthewcollett/Documents/ECE3232Projects/RoverTech.X/debug/default/RoverTech_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.pgmentry.voltage" value="low"/>

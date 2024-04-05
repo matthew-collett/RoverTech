@@ -5,7 +5,10 @@
 #include "motor_settings.h"
 #include "pcls.h"
 
+static int lastTrack;
+
 void TRAIL_TRACKING_Start(void) {
+    lastTrack = TRACK_FORWARD;
     LINE_FOLLOWER_Initialize();
 }
 
@@ -30,7 +33,8 @@ static int TRAIL_TRACKING_DetermineDirection(const LineFollowerSensors sensors) 
         sensors.middle > BLACK_THRESHOLD && 
         sensors.right <= BLACK_THRESHOLD
     ) {
-        return TRACK_FORWARD;
+        lastTrack = TRACK_FORWARD;
+        return TRACK_FORWARD; 
         
     // Case 2 : Left sensor and middle sensor are reading white and right sensor is reading black. Turn right
     } else if (
@@ -38,6 +42,7 @@ static int TRAIL_TRACKING_DetermineDirection(const LineFollowerSensors sensors) 
         sensors.middle <= BLACK_THRESHOLD && 
         sensors.right > BLACK_THRESHOLD 
     ) {
+        lastTrack = TRACK_RIGHT;
         return TRACK_RIGHT;
         
     // Case 3 : Left sensor is reading white, middle sensor and right sensor are reading black. Turn right
@@ -46,6 +51,7 @@ static int TRAIL_TRACKING_DetermineDirection(const LineFollowerSensors sensors) 
         sensors.middle > BLACK_THRESHOLD && 
         sensors.right > BLACK_THRESHOLD
     ) {
+        lastTrack = TRACK_RIGHT;
         return TRACK_RIGHT;
         
     // Case 4 : Left sensor is reading black, middle sensor and right sensor are reading white. Turn left
@@ -54,6 +60,7 @@ static int TRAIL_TRACKING_DetermineDirection(const LineFollowerSensors sensors) 
         sensors.middle <= BLACK_THRESHOLD && 
         sensors.right <= BLACK_THRESHOLD
     ) {
+        lastTrack = TRACK_LEFT;
         return TRACK_LEFT;
         
     // Case 5 : Left sensor and middle sensor are reading black and right sensor is reading white. Turn left
@@ -62,9 +69,10 @@ static int TRAIL_TRACKING_DetermineDirection(const LineFollowerSensors sensors) 
         sensors.middle > BLACK_THRESHOLD && 
         sensors.right <= BLACK_THRESHOLD
     ) {
+        lastTrack = TRACK_LEFT;
         return TRACK_LEFT;
     } else {
-        return TRACK_FORWARD;
+        return lastTrack;
     }
 }
 

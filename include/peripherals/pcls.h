@@ -21,6 +21,10 @@ void PCLS_SetLaserScopeCommand(const unsigned char enable);
 
 void PCLS_ShootLaserCommand(void);
 
+void PCLS_RequestRepairCodeLaserCommand(void);
+
+void PCLS_TransmitRepairCodeLaserCommand(void);
+
 static void PCLS_StartMessage(const unsigned short messageId);
 
 static void PCLS_SendPayloadSize(const unsigned short payloadSize);
