@@ -1,2 +1,2 @@
 # RoverTech
-Private repository for RoverTech - ECE3232 The Harvester Challenge
+Repository for RoverTech - ECE3232 The Harvester Challenge
